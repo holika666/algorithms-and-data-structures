@@ -1,0 +1,37 @@
+#include <iostream>
+#include <cstdio>
+
+using namespace std;
+
+//创建顺序表的基础要素
+#define InitSize 10
+typedef struct {
+    int *data; 
+    int MaxSize; //顺序表当前最大可存储值
+    int length; //顺序表当前存储数据了的值
+} SeqList;
+
+//初始化顺序表
+void InitList(SeqList &L) {
+    L.data = (int *) malloc(InitSize * sizeof(int)); //将L的内存空间初始化
+    L.length = 0; //置零
+    L.MaxSize = InitSize; //初始化最大值
+}
+
+void IncreaseList(SeqList &L, int len) {
+    int *p = L.data; //中间量p
+    L.data = (int *) malloc((L.MaxSize + len) * sizeof(int)); //将增加的内存空间加到L中
+    for (int i = 0; i < L.MaxSize; i++)
+        L.data[i] = p[i]; //继承原有的值
+    L.MaxSize += len; //刷新最大值
+    free(p); //野指针p任务完成，将其释放
+}
+
+int main() {
+    SeqList L; //定义一个顺序表L
+    InitList(L); //进行初始化
+    //在顺序表中插入数据
+
+    IncreaseList(L, 10); //动态分配空间
+    return 0;
+}
