@@ -1,0 +1,26 @@
+#include<iostream>
+#include<cstdio>
+
+using namespace std;
+
+//定义顺序表
+#define Maxsize 10
+typedef struct {
+    int data[Maxsize];
+    int length;
+} SqList;
+
+//初始化顺序表
+void InitList(SqList &L) {
+    for(int i=0; i<Maxsize; i++)
+        L.data[i] = 0; //顺序表内所有元素都置零
+    L.length = 0; //统计长度的变量也归零
+}
+
+int main() {
+    SqList L; //声明顺序表L
+    InitList(L); //初始化刚声明的顺序表
+    for (int i = 0; i < Maxsize; i++)
+        printf("data[%d] = %d\n", i, L.data[i]);
+    return 0;
+}
