@@ -1,0 +1,32 @@
+#include <iostream>
+#include <cstdio>
+
+using namespace std;
+
+#define MaxSize 10 //定义最大长度
+typedef struct {
+    int data[MaxSize]; //静态存放
+    int length; //顺序表当前长度
+} SqList;
+
+//初始化顺序表的函数
+void InitList(SqList &L) {
+    L.length = 0;
+    for (int i = 0; i < MaxSize; i++)
+        L.data[i] = 0;
+}
+
+void ListInsert(SqList &L, int i, int e) {
+    for (int j = MaxSize; j >= i; j--) //找出i位之后的值
+        L.data[j] = L.data[j - 1]; //将其都往后移一位
+    L.data[i - 1] = e; //在位序i，下标i-1处添入我们要加入的值e
+    L.length++; //顺序表长度+1
+}
+
+int main() {
+    SqList L;
+    InitList(L);
+    ListInsert(L, 3, 3);
+    return 0;
+}
+
