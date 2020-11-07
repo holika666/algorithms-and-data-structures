@@ -1,0 +1,37 @@
+#include <iostream>
+#include <cstdio>
+
+using namespace std;
+
+#define Maxsize 10
+typedef struct {
+    int data[Maxsize];
+    int length;
+} SqList;
+
+void InitList(SqList &L) {
+    for (int i = 0; i < Maxsize; i++)
+        L.data[i] = 0;
+    L.length = 0;
+}
+
+bool ListDelete(SqList &L, int i, int &e) { //e值需要改变，因此使用&e
+    if (i < i || i > L.length) //判断i的位置是否满足条件
+        return false;
+    e = L.data[i - 1]; //被删除数赋给e
+    for (int j = i; j < L.length; j++) //所有位序i后的值，往前一位
+        L.data[j - 1] = L.data[j];
+    L.length--;
+    return true;
+}
+
+int main() {
+    SqList L;
+    InitList(L);
+    int e = -1; //设定一个变量，之后存储被删除的数
+    if (ListDelete(L, 3, e)) //i值可以由键盘输入，待改进
+        printf("已删除第三个元素，被删除元素值 = %d\n", e);
+    else
+        printf("位序i不合法，删除失败\n");
+    return 0;
+}
