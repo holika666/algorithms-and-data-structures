@@ -1,0 +1,36 @@
+#include <iostream>
+#include <cstdio>
+
+using namespace std;
+
+#define InitSize 10
+typedef struct {
+    int *data;
+    int MaxSize;
+    int length;
+} SeqList;
+
+void InitList(SeqList &L) {
+    L.data = (int *) malloc(InitSize * sizeof(int));
+    L.length = 0;
+    L.MaxSize = InitSize;
+}
+
+int LocateElem(SeqList &L, int e) {
+    for (int j = 0; j < L.length; j++)
+        if (L.data[j] == e)
+            return j + 1;
+    return 0;
+}
+
+int main() {
+    SeqList L;
+    InitList(L);
+    int e;
+    printf("请输入您要查找的值：");
+    scanf("%d", e);
+    if (LocateElem(L, e))
+        printf("您要查找的值为%d的元素的第一个位序 = %d\n", e, LocateElem(L,e));
+    printf("您输入的值e=%d不存在顺序表中\n，e");
+    return 0;
+}
