@@ -27,11 +27,11 @@ int main(){
     InitList(L);
     //插入元素。。。
     int i;
-    printf("请输入您要删除的值的位序：");
+    printf("请输入您要查找的值的位序：");
     scanf("%d" ,i);
     int e=-1;
     if( GetElem(L,i,e))
-        printf("您要删除的元素值 = %d\n" ,e);
+        printf("您查找的第%d位的元素值 = %d\n" ,i,e);
     printf("您输入的位序i不合法\n");
     return 0;
 }
