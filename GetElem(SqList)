@@ -1,0 +1,37 @@
+#include <iostream>
+#include <cstdio>
+
+using namespace std;
+
+#define MaxSize 10
+typedef struct {
+    int data[MaxSize];
+    int length;
+}SqList;
+
+void InitList(SqList &L){
+    for(int i=0;i<MaxSize;i++)
+        L.data[i]=0;
+    L.length=0;
+}
+
+bool GetElem(SqList &L,int i,int &e){
+    if(i<1 || i>L.length)
+        return false;
+    e=L.data[i-1];
+    return true;
+}
+
+int main(){
+    SqList L;
+    InitList(L);
+    //插入元素。。。
+    int i;
+    printf("请输入您要删除的值的位序：");
+    scanf("%d" ,i);
+    int e=-1;
+    if( GetElem(L,i,e))
+        printf("您要删除的元素值 = %d\n" ,e);
+    printf("您输入的位序i不合法\n");
+    return 0;
+}
