@@ -1,0 +1,37 @@
+#include <iostream>
+#include <cstdio>
+
+using namespace std;
+
+#define InitSize 10
+typedef struct {
+    int *data;
+    int MaxSize;
+    int length;
+}SeqList;
+
+void InitList(SeqList &L){
+    L.data = (int *)malloc(InitSize*sizeof(int));
+    L.length=0;
+    L.MaxSize=InitSize;
+}
+
+bool GetElem(SeqList &L,int i,int &e){
+    if(i<1 || i>L.length)
+        return false;
+    e=L.data[i-1];
+    return true;
+}
+
+int main(){
+    SeqList L;
+    InitList(L);
+    int i;
+    printf("请输入您要删除的值的位序：");
+    scanf("%d" ,i);
+    int e=-1;
+    if( GetElem(L,i,e))
+        printf("您要删除i%d的元素值 = %d\n" ,i,e);
+    printf("您输入的位序i不合法\n");
+    return 0;
+}
