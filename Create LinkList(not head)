@@ -1,0 +1,42 @@
+#include <iostream>
+#include <cstdio>
+
+using namespace std;
+
+typedef struct LNode {
+    int data;
+    struct LNode *next;
+} LNode, *LinkList;
+//else way (创建单链表)
+struct LNode_else_way {
+    int data;
+    struct LNode_else_way *next;
+};
+typedef struct LNode_else_way LNode_else_way;
+typedef struct LNode_else_way *LinkList_else_way;
+
+
+//初始化一个空的单链表
+bool InitList(LinkList &L) {
+    L = NULL; //另其为空，防止有脏数据
+    return true;
+}
+
+//判断单链表是否为空
+bool Empty(LinkList L) { //这里不需要对L的值进行回带，故不需要&
+    if (L == NULL)
+        return true;
+    else
+        return false;
+}
+
+//else way（判断单链表是否为空）
+bool Empty_else_way(LinkList L) {
+    return (L == NULL)
+}
+
+
+void test() {
+    LinkList L; //声明一个单链表的指针
+    InitList(L); //进行初始化
+}
