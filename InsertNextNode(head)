@@ -1,0 +1,41 @@
+#include <iostream>
+#include <cstdio>
+
+using namespace std;
+
+typedef struct LNode {
+    int data;
+    struct LNode *next;
+} LNode, *LinkList;
+
+bool InitList(LinkList &L) {
+    L = (LNode *) malloc(sizeof(LNode));
+    if (L == NULL)
+        return false;
+    L->next = NULL;
+    return true;
+}
+
+bool InsertNextNode(LNode *p, int e) {
+    if (p == NULL)
+        return false;
+    LNode *s = (LNode *) malloc(sizeof(LNode));
+    if (s == NULL)
+        return false;
+    s->data = e;
+    s->next = p->next;
+    p->next = s;
+    return true;
+}
+
+void test() {
+    LinkList L;
+    InitList(L);
+    int *p;
+    printf("请输入要插入结点的位置");
+    scanf("%d", p);
+    int e;
+    printf("请输入要插入元素的值");
+    scanf("%d", e);
+    InsertNextNode(*p, e);
+}
